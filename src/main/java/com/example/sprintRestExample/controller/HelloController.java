@@ -37,6 +37,12 @@ public class HelloController {
 		return "hi";
 	}
 	
+
+	@RequestMapping("/public")
+	public String sayPublic() {
+		return "free access";
+	}
+	
 	@RequestMapping("/greeting")
 	public Greeting greeting() {
 		Greeting greeting=Greeting.builder().message("Welcome to Spring Rest World").build();

@@ -18,8 +18,18 @@ public class SprintRestExampleApplication {
 		user.setId(1001);
 		user.setUserName("admin");
 		user.setPassword("Test123$");
-		user.setRoles("ADMIN");
+		user.setRoles("ROLE_ADMIN");
 		dao.save(user);
+		
+		
+		User user2=new User();
+		user2.setActive(true);
+		user2.setId(1001);
+		user2.setUserName("test");
+		user2.setPassword("Test123$");
+		user2.setRoles("ROLE_USER");
+		dao.save(user2);
+
 	}
 
 }

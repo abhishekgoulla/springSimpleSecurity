@@ -17,11 +17,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
     private UserDetailsService userDetailsService;
 
-	  @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
-    }
 	
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    	auth.userDetailsService(userDetailsService);
+    }
 	  
 	
 	
@@ -41,17 +40,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
-
     
-    /*@Override
-    protected void configure(HttpSecurity http) throws Exception {
+        protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/hi").hasRole("ADMIN")
-                .antMatchers("/hello").hasRole( "USER")
-                .antMatchers("/").permitAll()
-                .and().formLogin();
-    
-    
+                .antMatchers("/hello").hasAnyRole("USER","ADMIN")
+                .antMatchers("/public").permitAll()
+                .and().httpBasic();
+    	}
+        /*
     
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
